@@ -9,7 +9,7 @@ void euler(float t_init, float t_end, float delta_t, float omega, string filenam
 
 int main(){
   float omega=1;
-  euler(0.0, 0, 30, omega, "euler_001.dat");
+  euler(0.0, 30, 0.001/omega, omega, "euler_0001.dat");
   //runge_kutta(0.0, 4.0/omega, 0.01/omega, omega, "implicit_001.dat");
   return 0;
 }
@@ -18,12 +18,12 @@ void euler(float t_init, float t_end, float delta_t, float omega, string filenam
   float t=t_init;
   float ysig = 1.0;
   float yant=1.0;
-  float z=0
+  float z=0;
   ofstream outfile;
   outfile.open(filename);
 
   while(t<t_end){    
-    outfile << t << " " << ysig << z << endl;
+    outfile << t << " " << ysig << " " << z << endl;
     yant = ysig;
     ysig = yant + delta_t * z;
     z = z + delta_t*(-omega*omega*yant);
