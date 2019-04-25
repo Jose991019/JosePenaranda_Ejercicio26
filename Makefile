@@ -8,4 +8,4 @@ JosePenaranda_Ejercicio26.x: JosePenaranda_Ejercicio26.cpp
 	c++ JosePenaranda_Ejercicio26.cpp -o JosePenaranda_Ejercicio26.x
 
 clean:
-	rm -rf *.x *.dat
+	rm -rf *.x *.dat Resultado.png
