@@ -5,6 +5,8 @@ using namespace std;
 
 void euler(float t_init, float t_end, float delta_t, float omega, string filename);
 void RK4(float t_init, float t_end, float delta_t, float omega, string filename);
+void leap_frog(float t_init, float t_end, float delta_t, float omega, string filename);
+
 float f(float y, float v, float x, float omega){
     return -omega*omega*y;
 }
@@ -13,8 +15,10 @@ float f(float y, float v, float x, float omega){
 
 int main(){
   float omega=1;
-  euler(0.0, 30, 0.001/omega, omega, "euler_0001.dat");
-  RK4(0.0, 30, 0.001/omega, omega, "RK4_0001.dat");
+  euler(0.0, 15, 0.5/omega, omega, "euler_0001.dat");
+  RK4(0.0, 15, 0.5/omega, omega, "RK4_0001.dat");
+  leap_frog(0.0, 15, 0.5/omega, omega, "leap_frog_0001.dat");
+
   return 0;
 }
 
@@ -61,3 +65,23 @@ void RK4(float t_init, float t_end, float h, float omega, string filename){
   }
   outfile.close();
 }
+
+void leap_frog(float t_init, float t_end, float delta_t, float omega, string filename){
+  float t=t_init;
+  float y=1.0;
+  float v = 0;
+  float v_prime;
+  ofstream outfile;
+  outfile.open(filename);
+  outfile << t << " " << y << " " << v << endl;
+    while(t<t_end){    
+    v_prime = v + f(y,v,t,omega)*delta_t/2;
+    y = y + v_prime*delta_t;
+    v = v_prime + f(y,v,t,omega)*delta_t/2;
+    t = t + delta_t;
+    outfile << t << " " << y << " " << v << endl;
+  }
+  outfile.close();
+
+}
+
