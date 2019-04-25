@@ -15,9 +15,9 @@ float f(float y, float v, float x, float omega){
 
 int main(){
   float omega=1;
-  euler(0.0, 15, 0.5/omega, omega, "euler_0001.dat");
-  RK4(0.0, 15, 0.5/omega, omega, "RK4_0001.dat");
-  leap_frog(0.0, 15, 0.5/omega, omega, "leap_frog_0001.dat");
+  euler(0.0, 10000, 0.5/omega, omega, "euler.dat");
+  RK4(0.0, 10000, 0.5/omega, omega, "RK4.dat");
+  leap_frog(0.0, 10000, 0.5/omega, omega, "leap_frog.dat");
 
   return 0;
 }
